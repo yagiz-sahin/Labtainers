@@ -55,6 +55,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 ADD $labdir/$imagedir/sys_tar/sys.tar /
 ADD $labdir/sys_$lab.tar.gz /
+
+RUN systemctl enable ndp-bridge.service
+
 #
 RUN useradd -ms /bin/bash $user_name
 RUN echo "$user_name:$password" | chpasswd
